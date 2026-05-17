@@ -7,12 +7,18 @@ import { dirname, resolve } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+// On GitHub Actions the repo name becomes the base path for Pages
+const base = process.env.GITHUB_ACTIONS === 'true' ? '/BPTG-Solver/' : '/';
+
 export default defineConfig({
+  base,
   plugins: [
     react(),
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
+      // Don't register SW in dev — avoids request interception white-screen
+      devOptions: { enabled: false },
       manifest: {
         name: 'BPTG Schedule Solver',
         short_name: 'BPTG Solver',
@@ -34,7 +40,5 @@ export default defineConfig({
       '@worker': resolve(__dirname, 'src/worker'),
     },
   },
-  worker: {
-    format: 'es',
-  },
+  worker: { format: 'es' },
 });
