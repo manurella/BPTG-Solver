@@ -11,9 +11,16 @@ import type { SearchStats } from './dlx/dlx';
 import { encodePuzzle, solveDlx } from './dlx/encoder';
 import { computeStars, compareSolutions, pickOptimal } from './analyzer';
 
+/**
+ * Hard cap on solutions explored. Symmetric boards (e.g. identical cards on
+ * an unconstrained grid) can have factorial-many solutions; without a cap the
+ * DLX search runs forever and the postMessage payload becomes enormous.
+ */
+const MAX_SOLUTIONS_DEFAULT = 200;
+
 export function solve(puzzle: Puzzle, options: SolverOptions = {}): SolverResult {
   const {
-    maxSolutions = Infinity,
+    maxSolutions = MAX_SOLUTIONS_DEFAULT,
     allowRotations = false,
     allowReflections = false,
   } = options;
