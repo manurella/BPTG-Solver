@@ -90,7 +90,7 @@ export class DancingLinks {
 
     // Link data nodes left↔right circularly
     for (let i = 0; i < nodes.length; i++) {
-      nodes[i]!.L = nodes.at(i - 1)!;
+      nodes[i]!.L = nodes[(i - 1 + nodes.length) % nodes.length]!;
       nodes[i]!.R = nodes[(i + 1) % nodes.length]!;
     }
   }
