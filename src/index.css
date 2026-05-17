@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bp-pink: #ff0070;
+  --color-bp-pink-light: #ff4d9e;
+  --color-bp-pink-dark: #cc005a;
+  --color-bp-black: #0a0a0a;
+  --color-bp-surface: #111111;
+  --color-bp-surface-2: #1a1a1a;
+  --color-bp-border: #2a2a2a;
+  --color-bp-text: #f0f0f0;
+  --color-bp-muted: #666666;
+
+  --color-member-jisoo: #a78bfa;
+  --color-member-jennie: #fb923c;
+  --color-member-rose: #f472b6;
+  --color-member-lisa: #34d399;
+
+  --color-card-pink: #ff0070;
+  --color-card-yellow: #fbbf24;
+  --color-card-blue: #60a5fa;
+  --color-card-green: #34d399;
+  --color-card-purple: #a78bfa;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bp-black);
+  color: var(--color-bp-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100dvh;
+}
