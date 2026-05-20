@@ -36,8 +36,10 @@ export function solve(puzzle: Puzzle, options: SolverOptions = {}): SolverResult
   );
 
   const solutions: Solution[] = [];
+  let rawSolutionsVisited = 0;
 
   for (const moves of solveDlx(encoded, maxSolutions, stats)) {
+    rawSolutionsVisited++;
     // Respect the move limit
     if (moves.length > puzzle.moveLimit) continue;
 
@@ -55,6 +57,11 @@ export function solve(puzzle: Puzzle, options: SolverOptions = {}): SolverResult
       nodesExplored: stats.nodesExplored,
       solutionsFound: solutions.length,
       elapsedMs: performance.now() - startMs,
+      candidateMoves: encoded.rows.length,
+      primaryColumns: encoded.numCellCols,
+      secondaryColumns: encoded.numCols - encoded.numCellCols,
+      resultCap: maxSolutions,
+      resultCapReached: rawSolutionsVisited >= maxSolutions,
     },
   };
 }

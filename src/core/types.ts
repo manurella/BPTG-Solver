@@ -57,6 +57,11 @@ export interface SolverStats {
   readonly nodesExplored: number;
   readonly solutionsFound: number;
   readonly elapsedMs: number;
+  readonly candidateMoves: number;
+  readonly primaryColumns: number;
+  readonly secondaryColumns: number;
+  readonly resultCap: number;
+  readonly resultCapReached: boolean;
 }
 
 export interface SolverResult {

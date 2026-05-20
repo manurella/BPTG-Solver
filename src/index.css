@@ -36,8 +36,10 @@ html, body {
   color: var(--color-bp-text);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 #root {
   min-height: 100dvh;
+  overflow-x: hidden;
 }
